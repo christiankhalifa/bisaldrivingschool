@@ -1,0 +1,583 @@
+<title>Bisal Driving School</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Class 5 driver training in Edmonton. In-vehicle lessons and 15-hour theory course. Call 780-660-1225.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;800;900&family=Source+Sans+3:wght@400;600;700&family=Overpass+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: highway-sign hero over an asphalt band, then a lane-marked column of sections; payment desk is the working heart of the page */
+:root{
+  --bg:#F2F4F1;          /* concrete */
+  --surface:#FFFFFF;
+  --ink:#16201C;
+  --muted:#56635D;
+  --line:#D5DCD7;
+  --sign:#0B6B3A;        /* highway-sign green */
+  --sign-ink:#FFFFFF;
+  --mark:#F3BE2A;        /* lane-marking yellow */
+  --mark-ink:#1C1A10;
+  --asphalt:#20262A;
+  --asphalt-ink:#E9EDEA;
+  --soft:#E6EEE8;
+  --focus:#1F7AE0;
+  --f-display:"Overpass","Arial Narrow",Arial,sans-serif;
+  --f-body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --f-mono:"Overpass Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121614;--surface:#1A201D;--ink:#E7ECE8;--muted:#9CA9A2;--line:#2C3531;
+  --sign:#14864B;--sign-ink:#FFFFFF;--mark:#F3BE2A;--mark-ink:#1C1A10;
+  --asphalt:#0B0E0D;--asphalt-ink:#E9EDEA;--soft:#1F2925;--focus:#6AAEFF;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121614;--surface:#1A201D;--ink:#E7ECE8;--muted:#9CA9A2;--line:#2C3531;
+  --sign:#14864B;--sign-ink:#FFFFFF;--mark:#F3BE2A;--mark-ink:#1C1A10;
+  --asphalt:#0B0E0D;--asphalt-ink:#E9EDEA;--soft:#1F2925;--focus:#6AAEFF;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--f-body);}
+h1,h2,h3{font-family:var(--f-display);line-height:1.05;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font:700 .78rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--sign)}
+.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+/* Top bar */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--asphalt)}
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--asphalt);color:var(--asphalt-ink)}
+.topbar .wrap{display:flex;align-items:center;gap:20px;padding-block:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:900 1.05rem/1 var(--f-display);letter-spacing:.02em}
+.brand-mark{width:34px;height:34px;border-radius:7px;background:var(--sign);border:2px solid #fff;display:grid;place-items:center;font:900 1rem/1 var(--f-display);color:#fff}
+.nav{display:flex;gap:18px;margin-left:auto;flex-wrap:wrap}
+.nav a{text-decoration:none;font:600 .95rem/1 var(--f-display);opacity:.85}
+.nav a:hover{opacity:1;color:var(--mark)}
+.call{font:700 .95rem/1 var(--f-mono);background:var(--mark);color:var(--mark-ink);padding:9px 12px;border-radius:7px;text-decoration:none;white-space:nowrap}
+@media (max-width:760px){.nav{display:none}.call{margin-left:auto}}
+
+/* Hero */
+.hero{background:var(--asphalt);color:var(--asphalt-ink);position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;padding-block:56px 92px;align-items:center}
+.hero-copy{display:grid;gap:22px;min-width:0}
+.hero h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:900;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--mark)}
+.hero p.lead{font-size:1.15rem;max-width:34ch;color:#C9D1CC}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;font:800 1rem/1 var(--f-display);padding:15px 20px;border-radius:8px;text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn-mark{background:var(--mark);color:var(--mark-ink)}
+.btn-mark:hover{filter:brightness(1.06)}
+.btn-ghost{border-color:#56615C;color:var(--asphalt-ink);background:transparent}
+.btn-ghost:hover{border-color:var(--asphalt-ink)}
+.btn-sign{background:var(--sign);color:var(--sign-ink)}
+.btn-sign:hover{filter:brightness(1.08)}
+
+/* The highway sign */
+.sign{background:#0B6B3A;color:#fff;border-radius:16px;padding:10px;box-shadow:0 18px 40px rgba(0,0,0,.35);transform:rotate(-1.2deg)}
+.sign-in{border:3px solid #fff;border-radius:10px;padding:22px 22px 18px;display:grid;gap:14px}
+.sign-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font:800 1.25rem/1.1 var(--f-display)}
+.sign-row .num{font:700 1.35rem/1 var(--f-mono)}
+.sign-row small{display:block;font:600 .8rem/1.3 var(--f-body);opacity:.85}
+.sign hr{border:0;border-top:2px solid rgba(255,255,255,.35);margin:0}
+.sign-head{display:flex;align-items:center;gap:10px;font:900 .85rem/1 var(--f-mono);letter-spacing:.14em}
+.shield{background:#fff;color:#0B6B3A;font:900 1rem/1 var(--f-display);padding:6px 9px;border-radius:6px 6px 14px 14px}
+.road{position:absolute;left:0;right:0;bottom:22px;height:6px;background:repeating-linear-gradient(90deg,var(--mark) 0 46px,transparent 46px 86px);opacity:.9;animation:drive 2.4s linear infinite}
+@keyframes drive{to{background-position:-86px 0}}
+@media (prefers-reduced-motion:reduce){.road{animation:none}}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-block:40px 80px}.sign{transform:none}}
+
+/* Sections */
+section{padding-block:72px}
+.sec-head{display:grid;gap:10px;margin-bottom:36px;max-width:680px}
+.sec-head h2{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:900}
+.sec-head p{color:var(--muted)}
+.lane{height:4px;background:repeating-linear-gradient(90deg,var(--line) 0 30px,transparent 30px 52px)}
+
+/* Pricing */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:grid;gap:14px;align-content:start;position:relative}
+.plan.best{border:2px solid var(--sign)}
+.tag{position:absolute;top:-13px;left:22px;background:var(--mark);color:var(--mark-ink);font:700 .72rem/1 var(--f-mono);letter-spacing:.1em;padding:7px 9px;border-radius:5px;text-transform:uppercase}
+.plan h3{font-size:1.35rem;font-weight:800}
+.price{font:700 2.6rem/1 var(--f-mono);font-variant-numeric:tabular-nums;color:var(--ink)}
+.price span{font:600 1rem/1 var(--f-body);color:var(--muted)}
+.plan ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.plan li{padding-left:24px;position:relative;color:var(--muted)}
+.plan li::before{content:"";position:absolute;left:2px;top:.62em;width:12px;height:4px;background:var(--sign);border-radius:2px}
+.plan .btn{justify-content:center;margin-top:6px}
+.note{margin-top:18px;color:var(--muted);font-size:.95rem}
+@media (max-width:900px){.plans{grid-template-columns:1fr}}
+
+/* Path to licence */
+.path{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s}
+.step{padding:24px 22px;border-top:4px solid var(--sign);display:grid;gap:8px;align-content:start}
+.step:nth-child(even){border-top-color:var(--mark)}
+.step .num{font-size:.85rem;color:var(--muted)}
+.step h3{font-size:1.2rem;font-weight:800}
+.step p{color:var(--muted);font-size:.97rem}
+@media (max-width:900px){.path{grid-template-columns:1fr 1fr;gap:12px}}
+@media (max-width:520px){.path{grid-template-columns:1fr}}
+
+/* Payment desk */
+.pay{background:var(--soft)}
+.desk{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:grid;gap:18px;min-width:0}
+.panel h3{font-size:1.25rem;font-weight:800}
+label{font:600 .92rem/1.2 var(--f-body);display:grid;gap:6px}
+input,select,textarea{font:400 1rem/1.3 var(--f-body);padding:11px 12px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--ink);width:100%}
+.choices{display:grid;gap:10px}
+.choice{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:14px;cursor:pointer;background:var(--bg)}
+.choice input{width:auto;accent-color:var(--sign)}
+.choice b{font-family:var(--f-display);font-weight:800}
+.choice .num{margin-left:auto;font-weight:700}
+.choice:has(input:checked){border-color:var(--sign);box-shadow:inset 0 0 0 1px var(--sign)}
+.stepper{display:flex;align-items:center;gap:10px}
+.stepper button{width:40px;height:40px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:800 1.2rem/1 var(--f-display);cursor:pointer}
+.stepper output{font:700 1.2rem/1 var(--f-mono);min-width:5ch;text-align:center}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:2px dashed var(--line);padding-top:16px}
+.total b{font:700 2.2rem/1 var(--f-mono);font-variant-numeric:tabular-nums}
+.tabs{display:flex;gap:6px;background:var(--bg);padding:5px;border-radius:9px;border:1px solid var(--line)}
+.tabs button{flex:1;border:0;background:transparent;color:var(--muted);font:800 .98rem/1 var(--f-display);padding:12px;border-radius:6px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--sign);color:var(--sign-ink)}
+.field{display:flex;gap:8px;align-items:stretch;flex-wrap:wrap}
+.field code{flex:1 1 200px;min-width:0;font:700 .98rem/1.3 var(--f-mono);background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:11px 12px;overflow-wrap:anywhere;user-select:all}
+.copy{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 .85rem/1 var(--f-display);border-radius:7px;padding:0 14px;cursor:pointer;min-height:42px}
+.copy.done{background:var(--sign);color:var(--sign-ink);border-color:var(--sign)}
+ol.how{margin:0;padding-left:1.2em;display:grid;gap:8px;color:var(--muted)}
+ol.how b{color:var(--ink)}
+.stack{display:grid;gap:16px}
+.small{font-size:.9rem;color:var(--muted)}
+.callout{background:var(--bg);border-left:4px solid var(--mark);padding:12px 14px;border-radius:0 7px 7px 0;font-size:.95rem}
+@media (max-width:900px){.desk{grid-template-columns:1fr}}
+
+/* Register */
+.reg{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.reg .full{grid-column:1/-1}
+@media (max-width:600px){.reg{grid-template-columns:1fr}}
+#summary{white-space:pre-wrap;font:500 .92rem/1.5 var(--f-mono);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:16px;overflow-wrap:anywhere}
+
+/* Policies */
+.policies{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px}
+details{border-bottom:1px solid var(--line);padding-block:4px}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:16px 0;font:800 1.08rem/1.25 var(--f-display)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:700 1.3rem/1 var(--f-mono);color:var(--sign)}
+details[open] summary::after{content:"−"}
+details ul{margin:0 0 16px;padding-left:1.1em;display:grid;gap:6px;color:var(--muted)}
+@media (max-width:760px){.policies{grid-template-columns:1fr}}
+
+/* Contact */
+.contact{background:var(--asphalt);color:var(--asphalt-ink)}
+.contact .eyebrow{color:var(--mark)}
+.contact .sec-head p{color:#B9C3BD}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ccard{border:1px solid #3A4440;border-radius:var(--r);padding:22px;display:grid;gap:10px;min-width:0}
+.ccard .label{font:700 .75rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:#9FAAA4}
+.ccard .val{font:800 1.2rem/1.3 var(--f-display);overflow-wrap:anywhere;user-select:all}
+.ccard .copy{background:transparent;color:var(--asphalt-ink);border-color:#56615C;justify-self:start;min-height:36px}
+.ccard a{color:var(--mark)}
+@media (max-width:860px){.cgrid{grid-template-columns:1fr}}
+/* Reviews */
+.reviews .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+.rev-board{background:var(--sign);color:var(--sign-ink);border-radius:16px;padding:10px}
+.rev-board-in{border:3px solid #fff;border-radius:10px;padding:28px;display:grid;gap:16px}
+.rev-board h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:900}
+.rev-board p{opacity:.92;max-width:42ch}
+.stars{font:900 1.6rem/1 var(--f-display);letter-spacing:.12em;color:var(--mark)}
+.rev-board .btn-ghost{border-color:rgba(255,255,255,.55);color:#fff}
+.rev-board .btn-ghost:hover{border-color:#fff}
+.rev-side{display:grid;gap:14px}
+.rev-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:grid;gap:8px}
+.rev-card h3{font-size:1.15rem;font-weight:800}
+.rev-card p{color:var(--muted)}
+.rev-card a{color:var(--sign);font-weight:700}
+@media (max-width:860px){.reviews .wrap{grid-template-columns:1fr}}
+footer{background:var(--asphalt);color:#8E9A93;border-top:1px solid #333C38}
+footer .wrap{padding-block:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.9rem}
+</style>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="brand-mark">B</span>BISAL DRIVING SCHOOL</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#pricing">Pricing</a>
+      <a href="#path">How it works</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#payment">Pay</a>
+      <a href="#register">Register</a>
+      <a href="#policies">Policies</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="call" href="tel:+17806601225">780-660-1225</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow" style="color:var(--mark)">Class 5 driver training · Edmonton, AB</span>
+        <h1>From learner's permit to <em>road test ready.</em></h1>
+        <p class="lead">One-on-one in-vehicle lessons and the 15-hour theory course, with pick-up and drop-off from your registered address.</p>
+        <div class="btns">
+          <a class="btn btn-mark" href="#register">Register now</a>
+          <a class="btn btn-ghost" href="#pricing">See prices</a>
+        </div>
+      </div>
+      <div class="sign" role="img" aria-label="Price sign: one hour $70, 10 hours driving $650, 10 hours driving plus 15 hours online course $700">
+        <div class="sign-in">
+          <div class="sign-head"><span class="shield">5</span>CLASS 5 TRAINING</div>
+          <div class="sign-row"><div>Hourly lesson<small>2-hour minimum</small></div><span class="num">$70/hr</span></div>
+          <hr>
+          <div class="sign-row"><div>10 hrs driving</div><span class="num">$650</span></div>
+          <hr>
+          <div class="sign-row"><div>10 hrs driving<small>+ 15 hrs online course</small></div><span class="num">$700</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="road" aria-hidden="true"></div>
+  </div>
+
+  <section id="pricing">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Pricing</span>
+        <h2>Simple prices. No surprises.</h2>
+        <p>Pick a package or book by the hour. Every lesson is at least two hours behind the wheel.</p>
+      </div>
+      <div class="plans">
+        <article class="plan">
+          <h3>Hourly lessons</h3>
+          <div class="price">$70<span> / hour</span></div>
+          <ul>
+            <li>Minimum 2 hours per lesson ($140)</li>
+            <li>Brush-up or road test practice</li>
+            <li>Pick-up from your registered address</li>
+          </ul>
+          <a class="btn btn-sign" href="#payment" data-pick="hourly">Book hours</a>
+        </article>
+        <article class="plan">
+          <h3>10 hours driving</h3>
+          <div class="price">$650</div>
+          <ul>
+            <li>10 hours of in-vehicle training</li>
+            <li>Save $50 over hourly</li>
+            <li>Complete within 6 months</li>
+          </ul>
+          <a class="btn btn-sign" href="#payment" data-pick="driving10">Choose package</a>
+        </article>
+        <article class="plan best">
+          <span class="tag">Full course</span>
+          <h3>Driving + online course</h3>
+          <div class="price">$700</div>
+          <ul>
+            <li>10 hours in-vehicle training</li>
+            <li>15-hour online or in-class theory course</li>
+            <li>Meets the 10 + 15 hour minimum to earn your certificate</li>
+          </ul>
+          <a class="btn btn-sign" href="#payment" data-pick="full">Choose full course</a>
+        </article>
+      </div>
+      <p class="note">Pay by Interac e-Transfer, credit card, debit or cash.</p>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="lane"></div></div>
+
+  <section id="path">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">How it works</span>
+        <h2>Your route to a Class 5 licence</h2>
+        <p>Theory comes first, then time on the road. Finish both to earn your course certificate.</p>
+      </div>
+      <div class="path">
+        <div class="step"><span class="num">STEP 1</span><h3>Register</h3><p>Send your details and choose a package. Bring your operator's licence number.</p></div>
+        <div class="step"><span class="num">STEP 2</span><h3>15-hour theory</h3><p>Complete the online or in-class course within 3 months. Pass mark: 80%.</p></div>
+        <div class="step"><span class="num">STEP 3</span><h3>10 hours driving</h3><p>In-vehicle lessons in our school car, finished within 6 months. Pass mark: 75%.</p></div>
+        <div class="step"><span class="num">STEP 4</span><h3>Road test</h3><p>Book your test and tell your instructor ahead of time if you'd like to use the school car.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" class="reviews">
+    <div class="wrap">
+      <div class="rev-board">
+        <div class="rev-board-in">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <h2>See what our students say</h2>
+          <p>Read reviews from Bisal Driving School students and see photos of our school car and students who passed, all on our Google listing.</p>
+          <div class="btns">
+            <a class="btn btn-mark" href="https://www.google.com/maps/search/?api=1&amp;query=Bisal+Driving+School+1307+69+Street+SW+Edmonton+AB" target="_blank" rel="noopener">Read our Google reviews</a>
+            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Bisal+Driving+School+1307+69+Street+SW+Edmonton+AB" target="_blank" rel="noopener">See our photos</a>
+          </div>
+        </div>
+      </div>
+      <div class="rev-side">
+        <div class="rev-card">
+          <h3>Passed your road test?</h3>
+          <p>Congratulations! Share your experience on Google. It helps new drivers in Edmonton choose a school.</p>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Bisal+Driving+School+1307+69+Street+SW+Edmonton+AB" target="_blank" rel="noopener">Leave us a review →</a>
+        </div>
+        <div class="rev-card">
+          <h3>Have a question first?</h3>
+          <p>Call <b class="num">780-660-1225</b> and talk to an instructor before you sign up.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="payment" class="pay">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Payment</span>
+        <h2>Pay for your lessons</h2>
+        <p>Choose what you're paying for, then send an Interac e-Transfer or pay by credit card.</p>
+      </div>
+      <div class="desk">
+        <div class="panel">
+          <h3>1. What are you paying for?</h3>
+          <div class="choices" role="radiogroup" aria-label="Package">
+            <label class="choice"><input type="radio" name="pkg" id="pkg-hourly" value="hourly"><b>Hourly lessons</b><span class="num">$70/hr</span></label>
+            <div class="stepper" id="hoursRow" hidden>
+              <button type="button" id="hrMinus" aria-label="Fewer hours">−</button>
+              <output id="hrOut" aria-live="polite">2 hrs</output>
+              <button type="button" id="hrPlus" aria-label="More hours">+</button>
+              <span class="small">2-hour minimum</span>
+            </div>
+            <label class="choice"><input type="radio" name="pkg" id="pkg-driving10" value="driving10"><b>10 hours driving</b><span class="num">$650</span></label>
+            <label class="choice"><input type="radio" name="pkg" id="pkg-full" value="full" checked><b>10 hrs driving + 15 hrs online</b><span class="num">$700</span></label>
+          </div>
+          <label for="payName">Student's full name
+            <input id="payName" autocomplete="name" placeholder="e.g. Harpreet Singh">
+          </label>
+          <div class="total"><span>Amount to pay</span><b class="num" id="total">$700</b></div>
+        </div>
+
+        <div class="panel">
+          <h3>2. How would you like to pay?</h3>
+          <div class="tabs" role="tablist">
+            <button role="tab" id="tab-et" aria-selected="true" aria-controls="pane-et">Interac e-Transfer</button>
+            <button role="tab" id="tab-cc" aria-selected="false" aria-controls="pane-cc">Credit card</button>
+          </div>
+
+          <div id="pane-et" class="stack" role="tabpanel" aria-labelledby="tab-et">
+            <ol class="how">
+              <li>Open your bank's app and choose <b>Interac e-Transfer</b>.</li>
+              <li>Send <b class="num" id="etAmt">$700</b> to the email below.</li>
+              <li>Paste the message reference so we can match your payment.</li>
+              <li>Keep your confirmation. Bring proof of payment to class.</li>
+            </ol>
+            <div class="field"><code id="etEmail">bisaldrivingschool@gmail.com</code><button class="copy" data-copy="etEmail" type="button">Copy</button></div>
+            <div class="field"><code id="etRef">Full course – your name</code><button class="copy" data-copy="etRef" type="button">Copy</button></div>
+            <p class="callout">If your bank asks for a security question, call or text the answer to 780-660-1225. Don't put it in the message.</p>
+          </div>
+
+          <div id="pane-cc" class="stack" role="tabpanel" aria-labelledby="tab-cc" hidden>
+            <p>Card payments are processed on our secure checkout page. Your card details never pass through this website.</p>
+            <a class="btn btn-sign" id="ccBtn" href="#" target="_blank" rel="noopener" hidden>Pay <span class="num" id="ccAmt">$700</span> by card</a>
+            <div id="ccFallback" class="callout">To pay by credit card, call <b class="num">780-660-1225</b> and we'll take payment over the phone, or pay in person with credit, debit or cash.</div>
+            <p class="small">Visa and Mastercard accepted. Your receipt is your proof of payment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="register">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Register</span>
+        <h2>Start your registration</h2>
+        <p>Fill this in and we'll prepare your student contract. Then copy your details and email them to us, or call to finish over the phone.</p>
+      </div>
+      <div class="desk">
+        <form class="panel" id="regForm" novalidate>
+          <div class="reg">
+            <label for="rFirst">First name<input id="rFirst" required autocomplete="given-name"></label>
+            <label for="rLast">Last name<input id="rLast" required autocomplete="family-name"></label>
+            <label for="rPhone">Telephone<input id="rPhone" required type="tel" autocomplete="tel"></label>
+            <label for="rEmail">Email<input id="rEmail" type="email" autocomplete="email"></label>
+            <label class="full" for="rAddr">Pick-up address<input id="rAddr" required autocomplete="street-address" placeholder="Street, City/Town"></label>
+            <label for="rPostal">Postal code<input id="rPostal" autocomplete="postal-code"></label>
+            <label for="rDob">Date of birth<input id="rDob" type="date"></label>
+            <label for="rLic">Operator's licence no.<input id="rLic"></label>
+            <label for="rStart">Preferred start date<input id="rStart" type="date"></label>
+            <label class="full" for="rPkg">Course
+              <select id="rPkg">
+                <option>10 hrs driving + 15 hrs online course ($700)</option>
+                <option>10 hrs driving ($650)</option>
+                <option>Hourly lessons ($70/hr, 2-hour minimum)</option>
+              </select>
+            </label>
+            <label class="full" for="rPay">Payment method
+              <select id="rPay"><option>Interac e-Transfer</option><option>Credit card</option><option>Debit</option><option>Cash</option></select>
+            </label>
+          </div>
+          <p class="small" id="regErr" role="alert" hidden>Please add your first name, last name, phone number and pick-up address.</p>
+          <button class="btn btn-mark" type="submit" style="justify-content:center">Prepare my registration</button>
+        </form>
+        <div class="panel">
+          <h3>Your registration</h3>
+          <div id="summary">Fill in the form to see your registration here.</div>
+          <div class="btns">
+            <button class="copy" type="button" id="copySummary" disabled>Copy registration</button>
+          </div>
+          <p class="small">Email it to <b>bisaldrivingschool@gmail.com</b> or call <b class="num">780-660-1225</b>. You'll sign the full student contract at your first lesson. Students under 18 need a parent or guardian signature.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="lane"></div></div>
+
+  <section id="policies">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Terms &amp; conditions</span>
+        <h2>Good to know before you start</h2>
+        <p>The key points from our student contract.</p>
+      </div>
+      <div class="policies">
+        <div>
+          <details open><summary>Certificate requirements</summary><ul>
+            <li>Minimum 10 hours driving and 15 hours in-class/online training.</li>
+            <li>Complete the in-class or online course first, then in-vehicle training.</li>
+            <li>Pass marks: 80% in class, 75% in driving.</li>
+            <li>Below 75% in driving: at least 2 more hours, as your instructor recommends.</li>
+          </ul></details>
+          <details><summary>Cancelling a lesson</summary><ul>
+            <li>Give at least 24 hours' notice to cancel a driving lesson.</li>
+            <li>Late cancellations are charged $50.</li>
+          </ul></details>
+          <details><summary>Time limits</summary><ul>
+            <li>Driving lessons: finish within 6 months of registration, or within 2 years with a $100 penalty.</li>
+            <li>15-hour theory course: finish within 3 months, or up to 1 year with a penalty ($45 in-class, $75 online).</li>
+          </ul></details>
+          <details><summary>Switching course format</summary><ul>
+            <li>In-class to online after part 1: $75.</li>
+            <li>Online to in-class: $50.</li>
+          </ul></details>
+        </div>
+        <div>
+          <details><summary>Refund policy</summary><ul>
+            <li>Lessons taken are charged at $70/hr; the remaining amount is returned.</li>
+            <li>$75 is deducted if the in-class/online training has started or been completed.</li>
+            <li>$50 administration charge if you cancel before starting.</li>
+            <li>No refunds after 6 months from registration.</li>
+          </ul></details>
+          <details><summary>Pick-up, drop-off &amp; passengers</summary><ul>
+            <li>Pick-up and drop-off are at your registered address. Discuss any change with your instructor before booking.</li>
+            <li>Training is in school vehicles only.</li>
+            <li>Passengers are limited to those allowed under Section 12(2), such as another student, an instructor or instructor-in-training, a school manager, or an interpreter if needed.</li>
+          </ul></details>
+          <details><summary>Road test vehicle</summary><ul>
+            <li>The school car for your road test isn't included in these packages.</li>
+            <li>Tell your instructor in advance where and when your test is booked. Availability depends on the instructor's schedule and area.</li>
+          </ul></details>
+          <details><summary>Records</summary><ul>
+            <li>Following Alberta Transportation standards, student records are kept for 2 years.</li>
+          </ul></details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Contact</span>
+        <h2>Questions? Call or email.</h2>
+        <p>We'll help you choose a package and book your first lesson.</p>
+      </div>
+      <div class="cgrid">
+        <div class="ccard"><span class="label">Phone</span><span class="val num" id="cPhone">780-660-1225</span><button class="copy" type="button" data-copy="cPhone">Copy number</button></div>
+        <div class="ccard"><span class="label">Email &amp; e-Transfer</span><span class="val" id="cEmail">bisaldrivingschool@gmail.com</span><button class="copy" type="button" data-copy="cEmail">Copy email</button></div>
+        <div class="ccard"><span class="label">Address</span><span class="val" id="cAddr">1307 69 Street SW<br>Edmonton, AB T6X 1L3</span><a href="https://www.google.com/maps/search/?api=1&amp;query=1307+69+Street+SW+Edmonton+AB+T6X+1L3" target="_blank" rel="noopener">Open in Google Maps →</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span>© 2026 Bisal Driving School · Edmonton, Alberta</span><span>bisaldrivingschool.com</span></div></footer>
+
+<script>
+/* Set this to your Stripe / Square / Clover payment link to turn on online card payments.
+   Leave empty to show "call to pay by card" instead. */
+const CARD_PAYMENT_URL = "";
+
+const PKGS = {
+  hourly:   {label:"Hourly lessons", price:null},
+  driving10:{label:"10 hrs driving", price:650},
+  full:     {label:"Full course (10 hrs driving + 15 hrs online)", price:700}
+};
+let hours = 2;
+const $ = id => document.getElementById(id);
+const money = n => "$" + n.toLocaleString("en-CA");
+
+function current(){ const r = document.querySelector('input[name="pkg"]:checked'); return r ? r.value : "full"; }
+function amount(){ const k = current(); return k === "hourly" ? hours * 70 : PKGS[k].price; }
+
+function render(){
+  const k = current(), amt = amount();
+  $("hoursRow").hidden = k !== "hourly";
+  $("hrOut").textContent = hours + " hrs";
+  $("hrMinus").disabled = hours <= 2;
+  ["total","etAmt","ccAmt"].forEach(id => $(id).textContent = money(amt));
+  const name = $("payName").value.trim() || "your name";
+  const what = k === "hourly" ? hours + " hr lessons" : PKGS[k].label;
+  $("etRef").textContent = what + " – " + name;
+  if (CARD_PAYMENT_URL){ $("ccBtn").hidden = false; $("ccBtn").href = CARD_PAYMENT_URL; $("ccFallback").hidden = true; }
+}
+document.querySelectorAll('input[name="pkg"]').forEach(r => r.addEventListener("change", render));
+$("payName").addEventListener("input", render);
+$("hrMinus").onclick = () => { if (hours > 2) hours--; render(); };
+$("hrPlus").onclick  = () => { if (hours < 40) hours++; render(); };
+document.querySelectorAll("[data-pick]").forEach(a => a.addEventListener("click", () => {
+  $("pkg-" + a.dataset.pick).checked = true; render();
+}));
+
+/* tabs */
+function showTab(cc){
+  $("tab-et").setAttribute("aria-selected", !cc); $("tab-cc").setAttribute("aria-selected", cc);
+  $("pane-et").hidden = cc; $("pane-cc").hidden = !cc;
+}
+$("tab-et").onclick = () => showTab(false);
+$("tab-cc").onclick = () => showTab(true);
+
+/* copy */
+function selectText(el){ const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+function copyFrom(el, btn){
+  const text = el.innerText.trim(), orig = btn.textContent;
+  const ok = () => { btn.textContent = "Copied"; btn.classList.add("done"); setTimeout(() => { btn.textContent = orig; btn.classList.remove("done"); }, 1600); };
+  try { navigator.clipboard.writeText(text).then(ok, () => { selectText(el); btn.textContent = "Selected – press Ctrl+C"; }); }
+  catch(e){ selectText(el); btn.textContent = "Selected – press Ctrl+C"; }
+}
+document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", () => copyFrom($(b.dataset.copy), b)));
+
+/* registration */
+$("regForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const v = id => $(id).value.trim();
+  const missing = ["rFirst","rLast","rPhone","rAddr"].filter(id => !v(id));
+  $("regErr").hidden = !missing.length;
+  if (missing.length){ $(missing[0]).focus(); return; }
+  const lines = [
+    "BISAL DRIVING SCHOOL – NEW STUDENT REGISTRATION",
+    "",
+    "Name: " + v("rFirst") + " " + v("rLast"),
+    "Telephone: " + v("rPhone"),
+    v("rEmail") && "Email: " + v("rEmail"),
+    "Pick-up address: " + v("rAddr") + (v("rPostal") ? ", " + v("rPostal") : ""),
+    v("rDob") && "Date of birth: " + v("rDob"),
+    v("rLic") && "Operator's licence no.: " + v("rLic"),
+    v("rStart") && "Preferred start date: " + v("rStart"),
+    "Course: " + v("rPkg"),
+    "Payment method: " + v("rPay")
+  ].filter(Boolean);
+  $("summary").textContent = lines.join("\n");
+  $("copySummary").disabled = false;
+});
+$("copySummary").addEventListener("click", e => copyFrom($("summary"), e.currentTarget));
+
+render();
+</script>
